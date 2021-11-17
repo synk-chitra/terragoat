@@ -12,14 +12,32 @@ resource "aws_security_group" "ssh_traffic" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
+  tags = {
+    git_commit           = "c8f935f9aec0a2718cf0baecc7a17aba96ae4c2e"
+    git_file             = "terraform/simple_instance/ec2.tf"
+    git_last_modified_at = "2021-11-17 18:58:28"
+    git_last_modified_by = "91735676+synk-chitra@users.noreply.github.com"
+    git_modifiers        = "91735676+synk-chitra"
+    git_org              = "synk-chitra"
+    git_repo             = "terragoat"
+    yor_trace            = "94c9bfaf-6130-41af-bb8f-2b47f994dce8"
+  }
 }
 
 resource "aws_instance" "web_server_instance" {
-  ami = data.aws_ami.ubuntu.id
-  instance_type = "t2.micro"
-  security_groups = [ "${aws_security_group.ssh_traffic.name}" ]
+  ami             = data.aws_ami.ubuntu.id
+  instance_type   = "t2.micro"
+  security_groups = ["${aws_security_group.ssh_traffic.name}"]
   tags = {
-    Name = "bc_workshop_ec2"
+    Name                 = "bc_workshop_ec2"
+    git_commit           = "c8f935f9aec0a2718cf0baecc7a17aba96ae4c2e"
+    git_file             = "terraform/simple_instance/ec2.tf"
+    git_last_modified_at = "2021-11-17 18:58:28"
+    git_last_modified_by = "91735676+synk-chitra@users.noreply.github.com"
+    git_modifiers        = "91735676+synk-chitra"
+    git_org              = "synk-chitra"
+    git_repo             = "terragoat"
+    yor_trace            = "48815395-b89e-4f42-8abe-740b823cf2b3"
   }
 }
 
@@ -27,7 +45,7 @@ data "aws_ami" "ubuntu" {
   most_recent = true
 
   filter {
-    name = "name"
+    name   = "name"
     values = ["ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-*"]
   }
 
